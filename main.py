@@ -7,7 +7,7 @@ filepaths = [f"resume_{i}.txt" for i in range(len(resume_texts))]
 
 # Example Job Description
 job_description = """
-At [Company X], we’re building human-focused technology solutions that improve efficiency and performance. We’re seeking a front-end developer to translate user-friendly designs into crisp code and thoughtful experiences for our customers. This person will work alongside our web team to determine customer needs, brainstorm solutions, generate website mockups and prototypes, present work to customers, and develop and optimize live platforms. We’re looking for someone who is quick, technically strong, and not afraid to ask questions. An understanding of not just how to code but why certain code works is essential.
+Robust and responsive web applications instill a sense of trust and reliability toward a brand in today’s dynamic and ever-evolving cyberspace. We are on the lookout for a top-class AngularJS developer to build streamlined applications that seamlessly meet the users’ needs. Our ideal AngularJS developer must first and foremost be a team player who has a compelling and deep-rooted fascination with coding. With the ability to see the big picture, the AngularJS developer should be a natural at taking complex technical decisions for both frontend and backend JavaScript applications. If you are a problem-solver with proficient knowledge in HTML, JavaScipt, and CSS and have the thirst for creating powerful and prominent web applications, then you might be the right fit for us.
 """
 
 # Build FAISS index and search
