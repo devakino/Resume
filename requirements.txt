@@ -2,4 +2,8 @@ faiss-cpu
 numpy
 scikit-learn
 sentence-transformers
-PyMuPDF
+python-dotenv
+google-generativeai
+pydantic
+typing-extensions
+pymupdf
