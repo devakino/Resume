@@ -1,3 +1,5 @@
+# Using both pydantic and TypedDict and LLM
+
 import os
 import pickle
 import fitz  # PyMuPDF
@@ -10,13 +12,20 @@ os.makedirs(CACHE_DIR, exist_ok=True)
 CACHE_PATH = os.path.join(CACHE_DIR, "resume_texts.pkl")
 
 def extract_resume_texts(force_reextract=False):
+    """
+    Extract text from all PDFs in data directory.
+    Returns:
+        resume_texts: List[str] - list of resume texts
+        resume_filenames: List[str] - list of original resume file paths
+    """
     if os.path.exists(CACHE_PATH) and not force_reextract:
-        print("✅ Loaded extracted resume text from cache.")
+        print("✅ Loaded extracted resume texts from cache.")
         with open(CACHE_PATH, "rb") as f:
             return pickle.load(f)
 
     print("🛠️ Extracting text from PDFs...")
     resume_texts = []
+    resume_filenames = []
 
     all_files = os.listdir(DATA_DIR)
     pdf_files = [f for f in all_files if f.lower().endswith('.pdf')]
@@ -33,6 +42,7 @@ def extract_resume_texts(force_reextract=False):
 
             if full_text.strip():
                 resume_texts.append(full_text.strip())
+                resume_filenames.append(pdf_path)
                 print(f"✅ Extracted: {pdf_file}")
             else:
                 print(f"❌ Skipped (no text): {pdf_file}")
@@ -40,7 +50,7 @@ def extract_resume_texts(force_reextract=False):
             print(f"⚠️ Error reading {pdf_file}: {e}")
 
     with open(CACHE_PATH, "wb") as f:
-        pickle.dump(resume_texts, f)
+        pickle.dump((resume_texts, resume_filenames), f)
 
     print(f"\n📦 Saved extracted resume texts to cache ({CACHE_PATH})")
-    return resume_texts
+    return resume_texts, resume_filenames
